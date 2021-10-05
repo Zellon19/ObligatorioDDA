@@ -17,10 +17,10 @@ public class Mazo {
 
     public static void generarMazo() {
         for(int i=1; i<=12;i++) {
-            listaCartas.add(new Carta(i,"Oro"));
-            listaCartas.add(new Carta(i,"Copa"));
-            listaCartas.add(new Carta(i,"Espada"));
-            listaCartas.add(new Carta(i,"Basto"));
+            listaCartas.add(new Carta(i,Palo.ORO));
+            listaCartas.add(new Carta(i,Palo.ESPADA));
+            listaCartas.add(new Carta(i,Palo.BASTO));
+            listaCartas.add(new Carta(i,Palo.COPA));
         }
 
         Collections.shuffle(listaCartas); //baraja las cartas

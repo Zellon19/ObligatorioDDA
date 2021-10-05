@@ -4,16 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Carta {
-    private String palo;
+    private Palo palo;
     private int numero;
     private int valor;
     private List<Carta> listaCartas = new ArrayList<>();
 
-
-    public Carta(int numero, String palo){
-        this.numero = numero;
-        this.palo = palo;
-    }
 
     public int getNumero() {
         return numero;
@@ -36,6 +31,11 @@ public class Carta {
             }
         }
         return valor;
+    }
+
+    public Carta(int numero, Palo palo){
+        this.numero = numero;
+        this.palo = palo;
     }
 
 
