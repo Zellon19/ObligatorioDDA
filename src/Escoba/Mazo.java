@@ -7,14 +7,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Baraja {
+public class Mazo {
 
     public static void main(String[] args) {
-        generarBaraja();
+        generarMazo();
     }
 
     private static ArrayList<Carta> listaCartas = new ArrayList<>();
-    public static void generarBaraja() {
+
+    public static void generarMazo() {
         for(int i=1; i<=12;i++) {
             listaCartas.add(new Carta(i,"Oro"));
             listaCartas.add(new Carta(i,"Copa"));
@@ -33,13 +34,6 @@ public class Baraja {
         Carta carta = listaCartas.get(0);
         listaCartas.remove(0);
         return carta;
-    }
-
-    public void reparteMano(Mano mano) {
-
-        mano.setCarta1(getCarta());
-        mano.setCarta2(getCarta());
-        mano.setCarta3(getCarta());
     }
 
     public boolean quedanCartas() {
