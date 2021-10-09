@@ -75,7 +75,7 @@ public class Ronda {
         System.out.println("Que carta desea tirar?");
         int cartaTirar = scanner.nextInt();
 
-        if(cartaTirar <= jugador.getCartas().size() && cartaTirar >= 0){
+        if(cartaTirar <= jugador.getCartas().size() && cartaTirar > 0){
             System.out.println("Elija las cartas a levantar separadas por comas (0 para no levantar)");
             String cartasLevantar = scanner.next();
 
