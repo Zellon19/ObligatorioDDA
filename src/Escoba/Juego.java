@@ -1,5 +1,7 @@
 package Escoba;
 
+import java.util.Scanner;
+
 public class Juego {
 
     public static void main(String[] args) {
@@ -15,7 +17,13 @@ public class Juego {
 
             switch(opcion) {
                 case 1:
-
+                    Ronda ronda = new Ronda();
+                    ronda.setupInicial();
+                    while(ronda.getMazo().quedanCartas()) {
+                        for (int i = 0; i < 6; i++) {
+                            ronda.Turno();
+                        }
+                    }
                     break;
                 case 2:
 

@@ -14,7 +14,7 @@ public class Carta {
         return numero;
     }
 
-    public String getPalo() {
+    public Palo getPalo() {
         return palo;
     }
 
@@ -38,5 +38,8 @@ public class Carta {
         this.palo = palo;
     }
 
-
+    @Override
+    public String toString() {
+        return numero + " de " + palo;
+    }
 }
