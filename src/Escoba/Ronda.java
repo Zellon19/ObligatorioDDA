@@ -13,12 +13,29 @@ public class Ronda {
 
     private Mazo mazo = new Mazo();
 
-    private Jugador jugador1 = new Jugador("Jugador1");
-    private Jugador jugador2 = new Jugador("Jugador2");
+    private Jugador jugador1;
+    private Jugador jugador2;
+
+    public Jugador getJugador1() {
+        return jugador1;
+    }
+    public Jugador getJugador2() {
+        return jugador2;
+    }
+    public void setJugador1(Jugador jugador1) {
+        this.jugador1 = jugador1;
+    }
+    public void setJugador2(Jugador jugador2) {
+        this.jugador2 = jugador2;
+    }
+
+    public Ronda(Jugador pJugador1, Jugador pJugador2){
+        this.jugador1 = pJugador1;
+        this.jugador2 = pJugador2;
+    }
 
 
-    public void setupInicial(){ //Reparte a los jugadores y coloca 4 cartas en la mesa
-        repartirJugadores();
+    public void setupInicial(){ //Coloca 4 cartas en la mesa
         for(int i=0; i<4; i++){
             listaMesa.add(mazo.getCarta());
         }
@@ -40,16 +57,14 @@ public class Ronda {
     public void Turno(){
         cambiaTurno();
 
-        if(jugador1.getTurno()){
+        if(jugador1.getTurno()){ //Chequea de quien es el turno
             System.out.println("Turno Jugador 1");
             System.out.println("Cartas de la mesa:");
             System.out.println(listaMesa.toString());
             System.out.println("Cartas del Jugador 1");
             System.out.println(jugador1.getCartas().toString());
             boolean aux = true;
-            while(aux){
-                aux = TirarCartas(jugador1);
-            }
+            while(TirarCartas(jugador1)); //Se repite hasta no dar error
             System.out.println("--------------------");
 
         }
@@ -60,9 +75,7 @@ public class Ronda {
             System.out.println("Cartas del Jugador 2");
             System.out.println(jugador2.getCartas().toString());
             boolean aux = true;
-            while(aux){
-                aux = TirarCartas(jugador2);
-            }
+            while(TirarCartas(jugador2));
             System.out.println("--------------------");
         }
 
@@ -77,7 +90,7 @@ public class Ronda {
             System.out.println("Elija las cartas a levantar separadas por comas (0 para no levantar)");
             String cartasLevantar = scanner.next();
 
-            if(!cartasLevantar.equals("0")){ //Chequea que se quiera levantar
+            if(!cartasLevantar.equals("0")){ //Chequea que se quiera levantar algo
 
                 String[] cartas = cartasLevantar.split(",");
 

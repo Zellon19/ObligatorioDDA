@@ -6,7 +6,6 @@ import java.util.List;
 public class Jugador {
     private String nombre;
     private boolean turno;
-//    private Mano mano;
     private int puntos = 0;
     private List<Carta> cartas = new ArrayList<Carta>();
     private List<Carta> mazoRobado = new ArrayList<Carta>();

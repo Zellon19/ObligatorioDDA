@@ -17,14 +17,23 @@ public class Juego {
 
             switch(opcion) {
                 case 1:
-                    Ronda ronda = new Ronda();
+
+                    Jugador jugador1 = new Jugador("Jugador1"); //Jugadores se crean fuera de la ronda para poder reutilizarlos en varias rondas
+                    Jugador jugador2 = new Jugador("Jugador2");
+
+                    Ronda ronda = new Ronda(jugador1, jugador2);
                     ronda.setupInicial();
+
                     while(ronda.getMazo().quedanCartas()) {
+
+                        ronda.repartirJugadores();
+                        System.out.println("Repartir");
                         for (int i = 0; i < 6; i++) {
                             ronda.Turno();
                         }
                     }
                     break;
+
                 case 2:
 
                     break;
