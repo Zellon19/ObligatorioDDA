@@ -128,11 +128,11 @@ public class Ronda {
                     }
 
                     if(jugador1.getTurno()){ //Se le agrega la lista de cartas al mazo del jugador y se le saca la carta que tiro
-                        jugador1.AcumularCartas(mazoCartas);
+                        jugador1.acumularCartas(mazoCartas);
                         jugador1.SacarCarta(cartaTirar-1);
                     }
                     else{
-                        jugador2.AcumularCartas(mazoCartas);
+                        jugador2.acumularCartas(mazoCartas);
                         jugador2.SacarCarta(cartaTirar-1);
                     }
 

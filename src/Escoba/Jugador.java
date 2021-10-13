@@ -8,7 +8,7 @@ public class Jugador {
     private boolean turno;
     private int puntos = 0;
     private List<Carta> cartas = new ArrayList<Carta>();
-    private List<Carta> mazoRobado = new ArrayList<Carta>();
+    private List<Carta> mazoAcumulado = new ArrayList<Carta>();
 
     public int getPuntos() {
         return puntos;
@@ -17,10 +17,6 @@ public class Jugador {
     public String getNombre() {
         return nombre;
     }
-
-//    public Mano getMano() {
-//        return mano;
-//    }
 
     public void sumaPuntos(int p) {
         puntos=puntos+p;
@@ -38,12 +34,12 @@ public class Jugador {
     }
 
     public List<Carta> getMazoRobado(){
-        return mazoRobado;
+        return mazoAcumulado;
     }
 
-    public void AcumularCartas(ArrayList<Carta> cartas){
+    public void acumularCartas(ArrayList<Carta> cartas){
         for(Carta carta: cartas){
-            mazoRobado.add(carta);
+            mazoAcumulado.add(carta);
         }
     }
 
