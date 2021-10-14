@@ -130,11 +130,22 @@ public class Ronda {
                     if(jugador1.getTurno()){ //Se le agrega la lista de cartas al mazo del jugador y se le saca la carta que tiro
                         jugador1.acumularCartas(mazoCartas);
                         jugador1.sacarCarta(cartaTirar-1);
+
+                        if(!mazo.quedanCartas() && jugador2.getCartas().size() == 0){ //Solo en turno final para levantar las cartas que queden en la mesa
+                            jugador1.acumularCartas(listaMesa);
+                            listaMesa.clear();
+                        }
                     }
                     else{
                         jugador2.acumularCartas(mazoCartas);
                         jugador2.sacarCarta(cartaTirar-1);
+
+                        if(!mazo.quedanCartas() && jugador1.getCartas().size() == 0){
+                            jugador2.acumularCartas(listaMesa);
+                            listaMesa.clear();
+                        }
                     }
+
 
                     return false;
                 }
@@ -145,12 +156,23 @@ public class Ronda {
 
             }
             else{ //Si se decide no levantar se saca la carta de la mano del jugador y se agrega a la mesa
+
                 listaMesa.add(jugador.getCartas().get(cartaTirar-1));
                 if(jugador1.getTurno()){
                     jugador1.sacarCarta(cartaTirar-1);
+
+                    if(!mazo.quedanCartas() && jugador2.getCartas().size() == 0){
+                        jugador1.acumularCartas(listaMesa);
+                        listaMesa.clear();
+                    }
                 }
                 else{
                     jugador2.sacarCarta(cartaTirar-1);
+
+                    if(!mazo.quedanCartas() && jugador1.getCartas().size() == 0){
+                        jugador2.acumularCartas(listaMesa);
+                        listaMesa.clear();
+                    }
                 }
                 return false;
             }

@@ -37,6 +37,7 @@ public class Jugador {
         return mazoAcumulado;
     }
 
+
     public void acumularCartas(ArrayList<Carta> cartas){
         for(Carta carta: cartas){
             mazoAcumulado.add(carta);
@@ -51,12 +52,13 @@ public class Jugador {
         cartas.remove(i);
     }
 
-    public Jugador(String nombre) {
-        this.nombre = nombre;
-    }
-
     public void limpiar(){
         mazoAcumulado.clear();
         cartas.clear();
     }
+
+    public Jugador(String nombre) {
+        this.nombre = nombre;
+    }
+
 }
