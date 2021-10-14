@@ -96,7 +96,9 @@ public class Ronda {
 
                 int total = 0;
                 for(String carta: cartas){ //Agrega el valor de cada seleccionada carta al total
-                    total += listaMesa.get(Integer.parseInt(carta) - 1).getValor();
+                    if(Integer.parseInt(carta) <= listaMesa.size()) {
+                        total += listaMesa.get(Integer.parseInt(carta) - 1).getValor();
+                    }
                 }
 
                 total += jugador.getCartas().get(cartaTirar-1).getValor(); //Le suma el valor de la carta que se tira

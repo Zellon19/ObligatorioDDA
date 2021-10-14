@@ -1,5 +1,9 @@
 package Escoba;
 
+import java.text.CollationElementIterator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 public class Juego {
@@ -11,8 +15,8 @@ public class Juego {
             System.out.println("*** Bienvenido a la Escoba del 15 ***");
             System.out.println("Seleccione una opción");
             System.out.println("1- Jugar");
-            System.out.println("2- Ver puntajes");
-            System.out.println("3- ¿Cómo jugar?");
+            System.out.println("2- ¿Cómo jugar?");
+
 
             opcion = input.nextInt();
 
@@ -33,6 +37,7 @@ public class Juego {
 
                             ronda.repartirJugadores();
                             System.out.println("Repartir");
+                            System.out.println("--------------------");
                             for (int i = 0; i < 6; i++) {
                                 ronda.Turno();
                             }
@@ -43,12 +48,26 @@ public class Juego {
                         jugador2.limpiar();
 
                     }
+
+                    if(jugador1.getPuntos() > jugador2.getPuntos()){
+                        System.out.println("Gana el Jugador 1");
+                        System.out.println("Puntos Jugador 1: " + jugador1.getPuntos());
+                        System.out.println("Puntos Jugador 2: " + jugador2.getPuntos());
+                    }
+                    else if(jugador1.getPuntos() > jugador2.getPuntos()){
+                        System.out.println("Gana el Jugador 2");
+                        System.out.println("Puntos Jugador 1: " + jugador1.getPuntos());
+                        System.out.println("Puntos Jugador 2: " + jugador2.getPuntos());
+                    }
+                    else{
+                        System.out.println("Empate");
+                        System.out.println("Puntos Jugador 1: " + jugador1.getPuntos());
+                        System.out.println("Puntos Jugador 2: " + jugador2.getPuntos());
+                    }
+
                     break;
 
                 case 2:
-
-                    break;
-                case 3:
                     tutorial();
                     break;
                 default:
