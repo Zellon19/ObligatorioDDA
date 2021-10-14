@@ -129,11 +129,11 @@ public class Ronda {
 
                     if(jugador1.getTurno()){ //Se le agrega la lista de cartas al mazo del jugador y se le saca la carta que tiro
                         jugador1.acumularCartas(mazoCartas);
-                        jugador1.SacarCarta(cartaTirar-1);
+                        jugador1.sacarCarta(cartaTirar-1);
                     }
                     else{
                         jugador2.acumularCartas(mazoCartas);
-                        jugador2.SacarCarta(cartaTirar-1);
+                        jugador2.sacarCarta(cartaTirar-1);
                     }
 
                     return false;
@@ -147,15 +147,59 @@ public class Ronda {
             else{ //Si se decide no levantar se saca la carta de la mano del jugador y se agrega a la mesa
                 listaMesa.add(jugador.getCartas().get(cartaTirar-1));
                 if(jugador1.getTurno()){
-                    jugador1.SacarCarta(cartaTirar-1);
+                    jugador1.sacarCarta(cartaTirar-1);
                 }
                 else{
-                    jugador2.SacarCarta(cartaTirar-1);
+                    jugador2.sacarCarta(cartaTirar-1);
                 }
                 return false;
             }
         }
         return true;
+    }
+
+
+    public void calcularPuntos(){
+        int puntosJ1 = 0;
+        int puntosJ2 = 0;
+
+        if(jugador1.getMazoAcumulado().size() > jugador2.getMazoAcumulado().size()){ //Le suma 1 punto al jugador con mas cartas
+            puntosJ1++;
+        }
+        else if(jugador2.getMazoAcumulado().size() > jugador1.getMazoAcumulado().size()){
+            puntosJ2++;
+        }
+
+
+        int orosJ1 = 0;
+        int orosJ2 = 0;
+        for(Carta carta: jugador1.getMazoAcumulado()){ //Recorre la lista de cartas del Jugador
+            if(carta.getPalo() == Palo.ORO) {
+                orosJ1++; //Suma 1 al contador de oros
+
+                if(carta.getNumero() == 7 || carta.getNumero() == 12){ //El 12 y 7 de oro suman 1 punto
+                    puntosJ1++;
+                }
+            }
+        }
+        for(Carta carta: jugador2.getMazoAcumulado()){
+            if(carta.getPalo() == Palo.ORO) {
+                orosJ2++;
+
+                if(carta.getNumero() == 7 || carta.getNumero() == 12){
+                    puntosJ2++;
+                }
+            }
+        }
+        if(orosJ1 > orosJ2){
+            puntosJ1++;
+        }
+        else if(orosJ2 > orosJ1){
+            puntosJ2++;
+        }
+
+        jugador1.sumaPuntos(puntosJ1); //Se le suman los puntos a los jugadores
+        jugador2.sumaPuntos(puntosJ2);
     }
 
 

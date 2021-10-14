@@ -20,17 +20,27 @@ public class Juego {
 
                     Jugador jugador1 = new Jugador("Jugador1"); //Jugadores se crean fuera de la ronda para poder reutilizarlos en varias rondas
                     Jugador jugador2 = new Jugador("Jugador2");
+                    int puntosJuegoJ1 = 0;
+                    int puntosJuegoJ2 = 0;
 
-                    Ronda ronda = new Ronda(jugador1, jugador2);
-                    ronda.setupInicial();
 
-                    while(ronda.getMazo().quedanCartas()) {
+                    while(puntosJuegoJ1 < 21 && puntosJuegoJ2 < 21) {
+                        Ronda ronda = new Ronda(jugador1, jugador2);
+                        ronda.setupInicial();
 
-                        ronda.repartirJugadores();
-                        System.out.println("Repartir");
-                        for (int i = 0; i < 6; i++) {
-                            ronda.Turno();
+                        while (ronda.getMazo().quedanCartas()) {
+
+                            ronda.repartirJugadores();
+                            System.out.println("Repartir");
+                            for (int i = 0; i < 6; i++) {
+                                ronda.Turno();
+                            }
                         }
+                        ronda.calcularPuntos();
+
+                        jugador1.limpiar();
+                        jugador2.limpiar();
+
                     }
                     break;
 

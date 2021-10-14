@@ -33,7 +33,7 @@ public class Jugador {
         return cartas;
     }
 
-    public List<Carta> getMazoRobado(){
+    public List<Carta> getMazoAcumulado(){
         return mazoAcumulado;
     }
 
@@ -47,11 +47,16 @@ public class Jugador {
         cartas.add(carta);
     }
 
-    public void SacarCarta(int i){
+    public void sacarCarta(int i){
         cartas.remove(i);
     }
 
     public Jugador(String nombre) {
         this.nombre = nombre;
+    }
+
+    public void limpiar(){
+        mazoAcumulado.clear();
+        cartas.clear();
     }
 }
