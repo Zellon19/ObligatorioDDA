@@ -5,37 +5,41 @@ import java.util.List;
 
 public class Carta {
     private Palo palo;
-    private int numero;
+    private String numero;
     private int valor;
     private List<Carta> listaCartas = new ArrayList<>();
 
-
-    public int getNumero() {
+    public String getNumero() {
         return numero;
     }
-
     public Palo getPalo() {
         return palo;
     }
-
     public int getValor(){
-        valor = numero;
-        if(numero >= 10 ){
-            switch (valor){
-                case 10: valor = 8;
-                break;
-                case 11: valor = 9;
-                    break;
-                case 12: valor = 10;
-                    break;
-            }
-        }
         return valor;
     }
 
-    public Carta(int numero, Palo palo){
-        this.numero = numero;
+    public Carta(Integer valor, Palo palo){
+        this.valor = valor;
         this.palo = palo;
+        this.numero = valor.toString();
+
+        if(valor >= 10 ){
+            switch (valor){
+                case 10:
+                    this.numero = "Sota";
+                    this.valor = 8;
+                    break;
+                case 11:
+                    this.numero = "Caballo";
+                    this.valor = 9;
+                    break;
+                case 12:
+                    this.numero = "Rey";
+                    this.valor = 10;
+                    break;
+            }
+        }
     }
 
     @Override

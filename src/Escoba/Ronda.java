@@ -35,7 +35,7 @@ public class Ronda {
     }
 
 
-    public void setupInicial(){ //Coloca 4 cartas en la mesa
+    public void repartirInicial(){ //Coloca 4 cartas en la mesa
         for(int i=0; i<4; i++){
             listaMesa.add(mazo.getCarta());
         }
@@ -48,14 +48,14 @@ public class Ronda {
         }
     }
 
-    public void cambiaTurno() { //Invierte los turnos de los jugadores
+    public void cambiarTurno() { //Invierte los turnos de los jugadores
         boolean turno = jugador1.getTurno();
         jugador1.setTurno(!turno);
         jugador2.setTurno(turno);
     }
 
-    public void Turno(){
-        cambiaTurno();
+    public void jugarTurno(){
+        cambiarTurno();
 
         if(jugador1.getTurno()){ //Chequea de quien es el turno
             System.out.println("Turno Jugador 1");
@@ -83,11 +83,11 @@ public class Ronda {
 
     public boolean TirarCartas(Jugador jugador){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Que carta desea tirar?");
+        System.out.println("Que carta desea tirar? (Escriba la posicion de la carta: 1, 2, etc)");
         int cartaTirar = scanner.nextInt();
 
         if(cartaTirar <= jugador.getCartas().size() && cartaTirar > 0){ //Chequea que el indice de la carta a tirar no este fuera de rango
-            System.out.println("Elija las cartas a levantar separadas por comas (0 para no levantar)");
+            System.out.println("Elija las cartas a levantar separadas por comas sin espacios (0 para no levantar)");
             String cartasLevantar = scanner.next();
 
             if(!cartasLevantar.equals("0")){ //Chequea que se quiera levantar algo
@@ -201,7 +201,7 @@ public class Ronda {
             if(carta.getPalo() == Palo.ORO) {
                 orosJ1++; //Suma 1 al contador de oros
 
-                if(carta.getNumero() == 7 || carta.getNumero() == 12){ //El 12 y 7 de oro suman 1 punto
+                if(carta.getValor() == 7 || carta.getNumero().equals("Rey")){ //El 12 y 7 de oro suman 1 punto
                     puntosJ1++;
                 }
             }
@@ -210,7 +210,7 @@ public class Ronda {
             if(carta.getPalo() == Palo.ORO) {
                 orosJ2++;
 
-                if(carta.getNumero() == 7 || carta.getNumero() == 12){
+                if(carta.getValor() == 7 || carta.getNumero().equals("Rey")){
                     puntosJ2++;
                 }
             }

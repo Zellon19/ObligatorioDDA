@@ -1,10 +1,7 @@
 package Escoba;
 
 import java.text.CollationElementIterator;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Juego {
 
@@ -29,9 +26,9 @@ public class Juego {
                     int puntosJuegoJ2 = 0;
 
 
-                    while(puntosJuegoJ1 < 21 && puntosJuegoJ2 < 21) {
+                    while(puntosJuegoJ1 < 21 && puntosJuegoJ2 < 21) { //Se repite mientras ningun jugador alcanze los 21 puntos
                         Ronda ronda = new Ronda(jugador1, jugador2);
-                        ronda.setupInicial();
+                        ronda.repartirInicial();
 
                         while (ronda.getMazo().quedanCartas()) {
 
@@ -39,10 +36,20 @@ public class Juego {
                             System.out.println("Repartir");
                             System.out.println("--------------------");
                             for (int i = 0; i < 6; i++) {
-                                ronda.Turno();
+                                ronda.jugarTurno();
                             }
                         }
                         ronda.calcularPuntos();
+
+                        List<Carta> cartasJ1 = jugador1.getMazoAcumulado(); //Ordena los mazos de los jugadores y los muestra
+                        List<Carta> cartasJ2 = jugador2.getMazoAcumulado(); //en pantalla al finalizar la ronda
+                        cartasJ1.sort(Comparator.comparing(Carta::getValor));
+                        cartasJ2.sort(Comparator.comparing(Carta::getValor));
+
+                        System.out.println("Mazo Ordenado Jugador 1:");
+                        System.out.println(cartasJ1);
+                        System.out.println("Mazo Ordenado Jugador 2:");
+                        System.out.println(cartasJ2);
 
                         jugador1.limpiar();
                         jugador2.limpiar();
