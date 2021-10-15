@@ -186,9 +186,11 @@ public class Ronda {
 
         if(jugador1.getMazoAcumulado().size() > jugador2.getMazoAcumulado().size()){ //Le suma 1 punto al jugador con mas cartas
             puntosJ1++;
+            System.out.println("El jugador 1 gana en cantidad de cartas");
         }
         else if(jugador2.getMazoAcumulado().size() > jugador1.getMazoAcumulado().size()){
             puntosJ2++;
+            System.out.println("El jugador 2 gana en cantidad de cartas");
         }
 
 
@@ -198,8 +200,13 @@ public class Ronda {
             if(carta.getPalo() == Palo.ORO) {
                 orosJ1++; //Suma 1 al contador de oros
 
-                if(carta.getValor() == 7 || carta.getNumero().equals("Rey")){ //El 12 y 7 de oro suman 1 punto
+                if(carta.getValor() == 7){ //El 12 y 7 de oro suman 1 punto
                     puntosJ1++;
+                    System.out.println("El jugador 1 tiene el 7 de oro");
+                }
+                else if(carta.getNumero().equals("Rey")){
+                    puntosJ1++;
+                    System.out.println("El jugador 1 tiene el Rey de oro");
                 }
             }
         }
@@ -207,16 +214,26 @@ public class Ronda {
             if(carta.getPalo() == Palo.ORO) {
                 orosJ2++;
 
-                if(carta.getValor() == 7 || carta.getNumero().equals("Rey")){
+                if(carta.getValor() == 7){
                     puntosJ2++;
+                    System.out.println("El jugador 2 tiene el 7 de oro");
+                }
+                else if(carta.getNumero().equals("Rey")){
+                    puntosJ2++;
+                    System.out.println("El jugador 2 tiene el Rey de oro");
                 }
             }
         }
         if(orosJ1 > orosJ2){
             puntosJ1++;
+            System.out.println("El jugador 1 gana en oros");
         }
         else if(orosJ2 > orosJ1){
             puntosJ2++;
+            System.out.println("El jugador 2 gana en oros");
+        }
+        else{
+            System.out.println("Tienen la misma cantidad de oros");
         }
 
         jugador1.sumaPuntos(puntosJ1); //Se le suman los puntos a los jugadores

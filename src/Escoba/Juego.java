@@ -21,11 +21,9 @@ public class Juego {
 
                     Jugador jugador1 = new Jugador("Jugador1"); //Jugadores se crean fuera de la ronda para poder reutilizarlos en varias rondas
                     Jugador jugador2 = new Jugador("Jugador2");
-                    int puntosJuegoJ1 = 0;
-                    int puntosJuegoJ2 = 0;
 
 
-                    while(puntosJuegoJ1 < 21 && puntosJuegoJ2 < 21) { //Se repite mientras ningun jugador alcanze los 21 puntos
+                    while(jugador1.getPuntos() < 21 && jugador2.getPuntos() < 21) { //Se repite mientras ningun jugador alcanze los 21 puntos
                         Ronda ronda = new Ronda(jugador1, jugador2);
                         ronda.repartirInicial();
 
@@ -39,6 +37,9 @@ public class Juego {
                             }
                         }
                         ronda.calcularPuntos();
+
+                        System.out.println("Puntos Jugador 1: " + jugador1.getPuntos());
+                        System.out.println("Puntos Jugador 2: " + jugador2.getPuntos());
 
                         List<Carta> cartasJ1 = jugador1.getMazoAcumulado(); //Ordena los mazos de los jugadores y los muestra
                         List<Carta> cartasJ2 = jugador2.getMazoAcumulado(); //en pantalla al finalizar la ronda
