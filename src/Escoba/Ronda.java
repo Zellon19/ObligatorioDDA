@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 public class Ronda {
 
-    private ArrayList<Carta> listaSeleccionadas = new ArrayList<Carta>();
     private ArrayList<Carta> listaMesa = new ArrayList<Carta>();
     public Mazo getMazo(){
         return mazo;
@@ -63,7 +62,6 @@ public class Ronda {
             System.out.println(listaMesa.toString());
             System.out.println("Cartas del Jugador 1");
             System.out.println(jugador1.getCartas().toString());
-            boolean aux = true;
             while(TirarCartas(jugador1)); //Se repite hasta no dar error
             System.out.println("--------------------");
 
@@ -74,7 +72,6 @@ public class Ronda {
             System.out.println(listaMesa.toString());
             System.out.println("Cartas del Jugador 2");
             System.out.println(jugador2.getCartas().toString());
-            boolean aux = true;
             while(TirarCartas(jugador2));
             System.out.println("--------------------");
         }

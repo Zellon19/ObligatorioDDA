@@ -1,13 +1,12 @@
 package Escoba;
 
-import java.text.CollationElementIterator;
 import java.util.*;
 
 public class Juego {
 
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int opcion = 1;
+        int opcion;
         do {
             System.out.println("*** Bienvenido a la Escoba del 15 ***");
             System.out.println("Seleccione una opción");
@@ -61,7 +60,7 @@ public class Juego {
                         System.out.println("Puntos Jugador 1: " + jugador1.getPuntos());
                         System.out.println("Puntos Jugador 2: " + jugador2.getPuntos());
                     }
-                    else if(jugador1.getPuntos() > jugador2.getPuntos()){
+                    else if(jugador2.getPuntos() > jugador1.getPuntos()){
                         System.out.println("Gana el Jugador 2");
                         System.out.println("Puntos Jugador 1: " + jugador1.getPuntos());
                         System.out.println("Puntos Jugador 2: " + jugador2.getPuntos());
@@ -89,7 +88,7 @@ public class Juego {
     public static void tutorial(){ // mini tutorial uwu
         Scanner input = new Scanner(System.in);
 
-        int opcion = 1;
+        int opcion;
         do{
             System.out.println("*** Tutorial ***");
             System.out.println("1- Aprende lo básico");

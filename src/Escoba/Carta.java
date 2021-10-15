@@ -7,7 +7,6 @@ public class Carta {
     private Palo palo;
     private String numero;
     private int valor;
-    private List<Carta> listaCartas = new ArrayList<>();
 
     public String getNumero() {
         return numero;
