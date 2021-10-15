@@ -13,4 +13,12 @@ public enum Palo {
         this.id = id;
         this.palo = palo;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getPalo() {
+        return palo;
+    }
 }
